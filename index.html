@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exoplanet Explorer</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  
+	<header>
+	  <div class="logo">🌌 Exoplanet Explorer</div>
+
+	  <!-- زرار المنيو ☰ -->
+	  <div class="menu-toggle" onclick="toggleMenu()">
+		<div></div>
+		<div></div>
+		<div></div>
+	  </div>
+
+	  <nav id="navbar">
+		<a class="active" onclick="showPage('dashboard')">Home</a>
+		<a onclick="showPage('upload')">Upload</a>
+		<a onclick="showPage('about')">About</a>
+	  </nav>
+	</header>
+
+  <main>
+    <!-- Dashboard -->
+    <section id="dashboard">
+      <div class="card">
+        <h2>Exoplanet Dashboard</h2>
+        <p>Total Discoveries: <b>5502</b> (as of 2024)</p>
+        <canvas id="planetChart" height="100"></canvas>
+      </div>
+
+      <div class="card">
+        <h2>Featured Exoplanets</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th><th>Distance (ly)</th><th>Mass (M⊕)</th><th>Radius (R⊕)</th><th>Temp (K)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Kepler-186f</td><td>492</td><td>1.4</td><td>1.1</td><td>188</td></tr>
+            <tr><td>TRAPPIST-1e</td><td>39</td><td>0.69</td><td>0.92</td><td>251</td></tr>
+            <tr><td>Proxima Centauri b</td><td>4.24</td><td>1.27</td><td>1.08</td><td>234</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Upload -->
+    <section id="upload" class="hidden">
+      <div class="card">
+        <h2>Upload Data</h2>
+        <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+          <p>📁 Drag & Drop or Click to Browse CSV</p>
+        </div>
+        <input type="file" id="fileInput" accept=".csv" style="display:none" onchange="handleFile(event)">
+        <p id="uploadStatus"></p>
+      </div>
+    </section>
+	
+	<!-- Prediction Result -->
+	<section id="result" class="hidden">
+	  <div class="card">
+		<h2>Prediction Result</h2>
+		<p>Status: <span id="predictionStatus" class="status-label">--</span></p>
+		<canvas id="resultChart" height="150"></canvas>
+	  </div>
+	</section>
+	
+	<div id="loading">
+	  <div class="loader">
+		<div class="planet"></div>
+		<div class="planet2"></div>
+	  </div>
+	  <div class="loading-text">Scanning the Universe...</div>
+	</div>
+
+    <select id="model" class="hidden"></select>
+
+
+    <!-- About -->
+    <section id="about" class="hidden">
+      <div class="card">
+        <h2>About Exoplanet Explorer</h2>
+		<p>Not just a solution, a better future.</p>
+        <p>Discovering exoplanets has always been a challenge — but with AI, we can push the boundaries. Our system uses a single powerful model trained on a combined dataset from NASA’s Kepler and K2 missions, making predictions on whether a planet is more likely to be a candidate or confirmed.</p>
+		<p>How We Made It Possible</p>
+		<ul>
+			<li>Trained Random Forest model on merged Kepler + K2 datasets.</li>
+			<li>Allowed users to upload their own CSV data or enter values manually.</li>
+			<li>Interactive dashboard updates dynamically with user predictions.</li>
+		</ul>
+		<p>From Idea to Impact</p>
+		<p>With just a few clicks, you can explore how NASA’s data  combined with your own  is transformed into insights by machine learning.</p>
+		<p>Ready to Explore?</p>
+		<p>Your journey into discovering new worlds starts here. 
+Unlock the Universe. Let’s change the world.</p>
+		</div>
+	  
+	  <div class="about-video">
+		<video controls>
+		  <source src="./project.mp4" type="video/mp4">
+		  Your browser does not support the video tag.
+		</video>
+	  </div>
+    </section>
+  </main>
+
+  <footer>
+    Exoplanet Explorer © 2025 - Exploring worlds beyond our solar system
+  </footer>
+
+	<script src="./index.js"></script>
+
+</body>
+</html>
