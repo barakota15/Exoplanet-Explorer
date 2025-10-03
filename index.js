@@ -15,7 +15,7 @@ async function handleFile(e) {
     const formData = new FormData();
     formData.append("file", file);
 
-    fetch("http://127.0.0.1:5000/predict", {
+    fetch("http://41.232.225.98:5000/predict", {
       method: "POST",
       body: formData
     })
@@ -120,4 +120,5 @@ function toggleMenu() {
   const nav = document.querySelector("nav");
   toggle.classList.toggle("active");
   nav.classList.toggle("show");
+
 }
