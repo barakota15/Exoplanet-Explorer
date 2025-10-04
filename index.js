@@ -15,7 +15,7 @@ async function handleFile(e) {
     const formData = new FormData();
     formData.append("file", file);
 
-    fetch("https://6e271b1a0602.ngrok-free.app/predict", {
+    fetch("https://barakota15.pythonanywhere.com/predict", {
       method: "POST",
       body: formData
     })
@@ -122,4 +122,5 @@ function toggleMenu() {
   nav.classList.toggle("show");
 
 }
+
 
